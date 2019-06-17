@@ -22,12 +22,42 @@ class HomePage extends StatefulWidget{
 }
 
 class _MyAppState extends State<HomePage>{
+
+String myText = "Hello World";
+void _changeText(){
+  setState(() {
+    if(myText.startsWith("H")){
+      myText = "Welcome to app";
+    }else{
+      myText = "Hello World";
+    }
+  });
+}
+
+Widget _bodyWidget(){
+return new Container(
+  padding: const EdgeInsets.all(8.0),
+  child: new Center(
+    child: new Column(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: <Widget>[
+      new Text(myText, style: new TextStyle(fontSize: 20.0),),
+      new RaisedButton(child: new Text("Click",style: new TextStyle(color: Colors.white),),
+      onPressed: _changeText,
+      color: Colors.blue,
+      )
+    ],),
+  ),
+);
+
+}
+
   @override
   Widget build(BuildContext context) {
     return new Scaffold(
       appBar: new AppBar(title: new Text("Home Page"),
       ),
-      body: new Center(child: new Text("Hello World"),),
+      body: _bodyWidget()
     );
   }
 
