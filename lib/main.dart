@@ -10,6 +10,11 @@ class MyApp extends StatelessWidget {
     return new MaterialApp(
      title: "My App",
      home: new HomePage(),
+     theme: new ThemeData(
+       primarySwatch: Colors.green,
+       brightness: Brightness.dark,
+       accentColor: Colors.red
+     ),
       );
   }
   
@@ -42,10 +47,7 @@ return new Container(
       mainAxisAlignment: MainAxisAlignment.center,
       children: <Widget>[
       new Text(myText, style: new TextStyle(fontSize: 20.0),),
-      new RaisedButton(child: new Text("Click",style: new TextStyle(color: Colors.white),),
-      onPressed: _changeText,
-      color: Colors.blue,
-      )
+     
     ],),
   ),
 );
@@ -57,7 +59,11 @@ return new Container(
     return new Scaffold(
       appBar: new AppBar(title: new Text("Home Page"),
       ),
-      body: _bodyWidget()
+      body: _bodyWidget(),
+      floatingActionButton: new FloatingActionButton(
+        child: new Icon(Icons.add),
+        onPressed: _changeText,
+      ),
     );
   }
 
